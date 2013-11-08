@@ -48,8 +48,7 @@ int main(int argc, char *argv[]) {
         zoom++;
         break;
       case '-':
-        zoom--;
-        if(zoom < 1) zoom = 1;
+        if(zoom > 0) zoom--;
         break;
       case 'd':
         xoffset++;
