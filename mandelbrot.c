@@ -22,21 +22,16 @@ int main(int argc, char *argv[]) {
   ioctl(0, TIOCGWINSZ, &w);
   char command;
   char undo[w.ws_row*w.ws_col];
-  int zoom;
-  int xoffset;
-  int yoffset;
+  int zoom, xoffset, yoffset, x;
   zoom = 1;
-  int x;
   xoffset = 0;
   yoffset = 0;
 
   for(x=0; x < w.ws_row * w.ws_col; x++) 
     undo[x] = '\b';
-  
 
   printboard(1,0,0);
   while(1) {
-
     printf("%s",undo);
     printf("+ = zoom in, - = zoom out, use wasd for moving:\n");
     scanf("%c",&command);
@@ -73,18 +68,10 @@ int main(int argc, char *argv[]) {
 void printboard(int zoom, int xoffset, int yoffset) {
 
   char characters[11] = {' ',' ', '.', ',', '-', '~', '>', '+', '=', '#'};
-  float x0;
-  float y0;
-  float i;
-  float j;
-  float x;
-  float y;
-  int iteration;
-  int max_iteration;
-  max_iteration = 1000;
-  float xtemp;
-  int charac;
+  float x0, y0, i, j, x, y, xtemp;
+  int iteration, max_iteration, charac;
   char c;
+  max_iteration = 1000;
   for(j=0; j < w.ws_row; j++) {
     for(i=0; i<w.ws_col; i++) {
       iteration = 0;
@@ -125,7 +112,7 @@ void exitt() {
 }
 void colorr(int attr, int fg, int bg){
   int colors[8] = {31,33,32,34,35,36,31,30};
-  attr = 1;
+  attr = 1; 
   bg = 40;
   fg = colors[fg];
   char command[13];
