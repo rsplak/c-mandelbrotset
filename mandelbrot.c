@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
         zoom++;
         break;
       case '-':
-        if(zoom > 0) zoom--;
+        if(zoom > 1) zoom--;
         break;
       case 'd':
         xoffset++;
@@ -111,7 +111,7 @@ void exitt() {
   exit(0);
 }
 void colorr(int attr, int fg, int bg){
-  int colors[8] = {31,33,32,34,35,36,31,30};
+  int colors[8] = {31,33,32,34,31,36,35,30};
   attr = 1; 
   bg = 40;
   fg = colors[fg];
